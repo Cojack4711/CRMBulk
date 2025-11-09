@@ -1,0 +1,16 @@
+<?php
+// Copy this file to config.php and fill in your credentials.
+
+// Database credentials
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'crm');
+define('DB_USERNAME', 'your_database_user');
+define('DB_PASSWORD', 'your_database_password');
+
+// Email credentials
+define('SMTP_HOST', 'smtp.example.com');
+define('SMTP_USERNAME', 'user@example.com');
+define('SMTP_PASSWORD', 'password');
+define('SMTP_PORT', 587);
+define('SMTP_FROM_EMAIL', 'from@example.com');
+define('SMTP_FROM_NAME', 'CRM');

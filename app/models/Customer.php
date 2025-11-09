@@ -1,4 +1,6 @@
 <?php
+namespace App\Models;
+
 class Customer {
     private $conn;
     private $table = 'customers';

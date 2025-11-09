@@ -1,4 +1,6 @@
 <?php
+namespace App\Models;
+
 class Quote {
     private $conn;
     private $table = 'quotes';

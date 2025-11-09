@@ -1,10 +1,18 @@
 <?php
-include_once '../../config/Database.php';
-include_once '../../app/models/Email.php';
+namespace App\Controllers;
+
+use App\Config\Database;
+use App\Models\Email;
+use PDO;
 
 class EmailController {
     public function index() {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $email = new Email($db);
         $result = $email->read();
         $num = $result->rowCount();
@@ -33,6 +41,11 @@ class EmailController {
 
     public function create($data) {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $email = new Email($db);
 
         $email->customer_id = $data->customer_id;

@@ -1,5 +1,10 @@
 <?php
-require_once 'config.php';
+namespace App\Config;
+
+use PDO;
+use PDOException;
+
+require_once __DIR__ . '/config.php';
 
 class Database {
     private static $instance = null;
@@ -15,7 +20,9 @@ class Database {
             $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
-            echo 'Connection Error: ' . $e->getMessage();
+            error_log('Connection Error: ' . $e->getMessage());
+            // In a real application, you would handle this more gracefully
+            // For this API, we will let the request fail.
         }
     }
 

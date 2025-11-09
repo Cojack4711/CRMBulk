@@ -1,8 +1,8 @@
 <?php
+namespace App\Models;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php';
 
 class Email {
     private $conn;

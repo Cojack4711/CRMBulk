@@ -4,9 +4,9 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-include_once '../app/controllers/CustomerController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$customerController = new CustomerController();
+$customerController = new App\Controllers\CustomerController();
 
 $method = $_SERVER['REQUEST_METHOD'];
 

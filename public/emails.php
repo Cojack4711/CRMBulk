@@ -4,9 +4,9 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, GET');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-include_once '../app/controllers/EmailController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-$emailController = new EmailController();
+$emailController = new App\Controllers\EmailController();
 
 $method = $_SERVER['REQUEST_METHOD'];
 

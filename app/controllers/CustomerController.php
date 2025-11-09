@@ -1,10 +1,18 @@
 <?php
-include_once '../../config/Database.php';
-include_once '../../app/models/Customer.php';
+namespace App\Controllers;
+
+use App\Config\Database;
+use App\Models\Customer;
+use PDO;
 
 class CustomerController {
     public function index() {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $customer = new Customer($db);
         $result = $customer->read();
         $num = $result->rowCount();
@@ -34,6 +42,11 @@ class CustomerController {
 
     public function create($data) {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $customer = new Customer($db);
 
         $customer->first_name = $data->first_name;
@@ -52,6 +65,11 @@ class CustomerController {
 
     public function update($data) {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $customer = new Customer($db);
 
         $customer->id = $data->id;
@@ -71,6 +89,11 @@ class CustomerController {
 
     public function delete($data) {
         $db = Database::getInstance()->getConnection();
+        if(!$db) {
+            http_response_code(500);
+            echo json_encode(['message' => 'Database connection error']);
+            return;
+        }
         $customer = new Customer($db);
         $customer->id = $data->id;
 
